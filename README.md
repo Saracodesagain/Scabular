@@ -10,4 +10,48 @@ Scabular parses process data from exports (from task manager) and flags suspicio
 
 ## Installation
 
-TBD
+Dependencies is pandas, thats it ^.^
+
+```bash
+pip install -r requirements.txt
+```
+
+## How to Use
+
+To analyze a CSV file:
+
+```
+python3 scabular.py analyze --file sample.csv
+```
+
+Or with British spelling :)
+
+```
+python3 scabular.py analyse --file sample.csv
+```
+
+Example output:
+
+[!] Command used: analyze (American spelling)
+[!] Initiating analysis on file: sample.csv
+[+] Loaded 4 processes from file
+
+[!] Scanning for suspicious process relationships...
+
+[!] Suspicious relationships detected:
+
+🚨 Parent: explorer.exe (PID: 1368)
+   → Child: cmd.exe (PID: 1560)
+
+## Detection Logic
+
+Based on real-world ATT&CK techniques:
+
+Examples: 
+explorer.exe → cmd.exe        T1059.003
+svchost.exe → powershell.exe  T1047
+
+
+
+
+
